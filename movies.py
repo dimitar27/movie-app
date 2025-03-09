@@ -1,8 +1,9 @@
-import movie_storage
-import statistics
 import random
+import statistics
 
 import matplotlib
+
+import movie_storage
 
 matplotlib.use('Agg')
 
@@ -185,25 +186,25 @@ def search_movie():
             print(f"{searched_movie[i]}: {searched_movie_attribute[i]['rating']}")
     else:
 
-         matches = process.extract(user_input,
-                                   movies_database.keys(),
-                                   limit=2)
+        matches = process.extract(user_input,
+                                  movies_database.keys(),
+                                  limit=2)
 
-         if matches:
-             if matches[0][1] >= 96:
-                 movie_name = matches[0][0]
-                 print(f"{GREEN}{movie_name}, {movies_database[movie_name]}{RESET}")
-             else:
-                 print(f"{RED}Movie {user_input} not found. Did you mean:{RESET}")
-                 for match in matches:
-                     print(f"{CYAN}{match[0]}: {movies_database[match[0]]['rating']}{RESET}")
+        if matches:
+            if matches[0][1] >= 96:
+                movie_name = matches[0][0]
+                print(f"{GREEN}{movie_name}, {movies_database[movie_name]}{RESET}")
+            else:
+                print(f"{RED}Movie {user_input} not found. Did you mean:{RESET}")
+                for match in matches:
+                    print(f"{CYAN}{match[0]}: {movies_database[match[0]]['rating']}{RESET}")
 
 
 def movie_sorted_by_rating():
     """Sorts and prints movies in the database by their rating in descending order."""
     movies_database = movie_storage.get_movies()
     movies_sorted_by_rating = sorted(movies_database.items(),
-    key=lambda x: x[1]["rating"], reverse=True)
+                                     key=lambda x: x[1]["rating"], reverse=True)
     for movie in movies_sorted_by_rating:
         name, rating = movie[0], movie[1]["rating"]
         print(f"{BLUE}{name}: {rating}{RESET}")
@@ -232,7 +233,6 @@ def create_rating_histogram():
 
 
 def main():
-
     print("********** My Movies Database **********")
     while True:
         display_menu()

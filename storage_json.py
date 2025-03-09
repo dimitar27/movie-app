@@ -3,9 +3,11 @@ import json
 
 
 class StorageJson(IStorage):
-    def __init__(self, file_path):
-        self.file_path = file_path
+    """Handles movie storage using a JSON file."""
 
+    def __init__(self, file_path):
+        """Initializes the storage with the given file path."""
+        self.file_path = file_path
 
     def list_movies(self):
         """Retrieves the list of movies from the
@@ -17,11 +19,10 @@ class StorageJson(IStorage):
             data = {}
         return data
 
-
     def add_movie(self, title, year: int, rating: int, poster=None):
         """Adds a movie to the movies database.
-        Loads the information from the JSON file, add the movie,
-        and saves it."""
+        Loads the information from the JSON file,
+        add the movie, and saves it."""
         try:
             year = int(year)
             rating = float(rating)
@@ -48,12 +49,10 @@ class StorageJson(IStorage):
             with open(self.file_path, 'w') as fileobj:
                 json.dump(data, fileobj, indent=4)
 
-
-
     def delete_movie(self, title):
         """Deletes a movie from the movies database.
-        Loads the information from the JSON file, deletes the movie,
-        and saves it."""
+        Loads the information from the JSON file,
+        deletes the movie, and saves it."""
         try:
             with open(self.file_path, 'r') as fileobj:
                 data = json.load(fileobj)
@@ -67,8 +66,6 @@ class StorageJson(IStorage):
             print(f"Movie {title} successfully deleted")
         else:
             print(f"Movie {title} doesn't exist!")
-
-
 
     def update_movie(self, title, rating):
         """Updates a movie from the movies database."""
@@ -89,6 +86,3 @@ class StorageJson(IStorage):
 
 
 
-movie = StorageJson('data.json')
-movie.add_movie("Lord Of The Rings", 2000, 10)
-movie.update_movie("Harry Potter", 0)
