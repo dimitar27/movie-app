@@ -1,0 +1,10 @@
+{
+    "Harry Potter": {
+        "rating": 0,
+        "year": 2000
+    },
+    "Lord Of The Rings": {
+        "rating": 10.0,
+        "year": 2000
+    }
+}
