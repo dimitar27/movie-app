@@ -1,7 +1,7 @@
 import random
 import statistics
+
 from fuzzywuzzy import process
-from storage_json import StorageJson
 
 
 class MovieApp:
@@ -23,7 +23,7 @@ class MovieApp:
         """Adds a new movie to the database with its name, year, and rating."""
         movies_database = self._storage.list_movies()
 
-        user_input_movie = input(f"Enter new movie name: ")
+        user_input_movie = input("Enter new movie name: ")
         if user_input_movie.strip() == "":
             print(f"Movie name cannot be empty!")
             return
@@ -34,7 +34,7 @@ class MovieApp:
 
         while True:
             try:
-                user_input_year = input(f"Enter new movie year: ")
+                user_input_year = input("Enter new movie year: ")
                 if user_input_year.strip() == "":
                     raise ValueError("Year cannot be empty.")
                 user_input_year = int(user_input_year)
@@ -73,7 +73,7 @@ class MovieApp:
                     rating = float(input(f"Enter new movie rating (0-10): "))
                     if 0 <= rating <= 10:
                         self._storage.update_movie(movie_to_update, rating)
-                        print(f"Movie {movie_to_update} successfully updated")
+                        print(f"Movie {movie_to_update} successfully updated.")
                         break
                     else:
                         print(f"Rating must be between 0 and 10!")
@@ -169,10 +169,9 @@ class MovieApp:
         pass
 
     def run(self):
-            """Runs the main program loop."""
-            while True:
-                print(
-                    f"""
+        """Runs the main program loop."""
+        while True:
+            print("""
     ********** My Movies Database **********
 
     Menu:
@@ -186,42 +185,35 @@ class MovieApp:
     7. Search movie
     8. Movies sorted by rating 
     9. Generate website
-    """
-                )
+    """)
 
-                try:
-                    user_input = int(input("Enter choice (0-9): "))
-                except ValueError:
-                    print(f"Invalid choice. Please enter a number between 0 and 9.")
-                    continue
+            try:
+                user_input = int(input("Enter choice (0-9): "))
+            except ValueError:
+                print(f"Invalid choice. Please enter a number between 0 and 9.")
+                continue
 
-                if user_input == 0:
-                    print("Bye!")
-                    break
-                elif user_input == 1:
-                    self._command_list_movies()
-                elif user_input == 2:
-                    self._command_add_new_movie()
-                elif user_input == 3:
-                    self._command_delete_movie()
-                elif user_input == 4:
-                    self._command_update_movie()
-                elif user_input == 5:
-                    self._command_movie_stats()
-                elif user_input == 6:
-                    self._command_random_movie()
-                elif user_input == 7:
-                    self._command_search_movie()
-                elif user_input == 8:
-                    self._command_movie_by_rating()
-                else:
-                    print(f"Invalid choice.")
-                    continue
+            if user_input == 0:
+                print("Bye!")
+                break
+            elif user_input == 1:
+                self._command_list_movies()
+            elif user_input == 2:
+                self._command_add_new_movie()
+            elif user_input == 3:
+                self._command_delete_movie()
+            elif user_input == 4:
+                self._command_update_movie()
+            elif user_input == 5:
+                self._command_movie_stats()
+            elif user_input == 6:
+                self._command_random_movie()
+            elif user_input == 7:
+                self._command_search_movie()
+            elif user_input == 8:
+                self._command_movie_by_rating()
+            else:
+                print(f"Invalid choice.")
+                continue
 
-                input("Press Enter to continue")
-
-
-storage = StorageJson('movies.json')
-movie_app = MovieApp(storage)
-movie_app.run()
-
+            input("Press Enter to continue")
