@@ -193,6 +193,7 @@ class MovieApp:
                 print(f"Invalid choice. Please enter a number between 0 and 9.")
                 continue
 
+            print()
             if user_input == 0:
                 print("Bye!")
                 break
@@ -216,4 +217,5 @@ class MovieApp:
                 print(f"Invalid choice.")
                 continue
 
-            input("Press Enter to continue")
+
+            input("\nPress Enter to continue")
