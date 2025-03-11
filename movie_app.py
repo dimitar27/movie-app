@@ -1,8 +1,15 @@
+import os
 import random
 import statistics
+import requests
 
 from fuzzywuzzy import process
+from dotenv import load_dotenv
 
+load_dotenv()
+
+API_KEY = os.getenv("API_KEY")
+URL = f"https://www.omdbapi.com/?apikey={API_KEY}"
 
 class MovieApp:
     """Movie management application using JSON storage."""
@@ -32,35 +39,45 @@ class MovieApp:
             print(f"Movie {user_input_movie} already exists!")
             return
 
-        while True:
-            try:
-                user_input_year = input("Enter new movie year: ")
-                if user_input_year.strip() == "":
-                    raise ValueError("Year cannot be empty.")
-                user_input_year = int(user_input_year)
-                if user_input_year < 1900 or user_input_year > 2025:
-                    raise ValueError(f"Please enter a valid year between 1900 and 2025.")
-                break
-            except ValueError as e:
-                print(e)
+        try:
+            response = requests.get(f"{URL}&t={user_input_movie}")
 
-        while True:
-            try:
-                user_input_ranking = float(input(f"Enter new movie rating (0-10): "))
-                if 0 <= user_input_ranking <= 10:
-                    break
-                else:
-                    print(f"Rating must be between 0 and 10!")
-            except ValueError:
-                print(f"Please enter a valid rating (numbers only).")
+            if response.status_code != 200:
+                print(f"Error: API returned status code {response.status_code}")
+                return
 
-        self._storage.add_movie(user_input_movie, user_input_year, user_input_ranking)
-        print(f"Movie {user_input_movie} successfully added!")
+            movie_data = response.json()
+
+            if movie_data.get("Response") == "False":
+                print(f"Sorry, '{user_input_movie}' was not found in OMDb.")
+                return
+
+            title = movie_data.get("Title", "Unknown Title")
+            year = int(movie_data.get("Year", 0))
+
+            rating = float(movie_data.get("imdbRating", 0))
+
+            poster_url = movie_data.get("Poster", "")
+
+            self._storage.add_movie(title, year, rating, poster_url)
+            print(f"Movie '{title}' has been added!")
+
+        except requests.ConnectionError:
+            print("Error: Cannot connect to OMDb. Check your internet.")
+
+        except Exception as e:
+            print(f"Something went wrong: {e}")
 
     def _command_delete_movie(self):
         """Deletes a movie from the database by its name."""
         title = input("Enter movie name to delete: ")
-        self._storage.delete_movie(title)
+        movies = self._storage.list_movies()
+        if title in movies:
+            self._storage.delete_movie(title)
+            print(f"Movie {title} successfully deleted!")
+        else:
+            print(f"Movie {title} doesn't exist!")
+
 
     def _command_update_movie(self):
         """Prompts the user to update movie details (year and/or rating)."""

@@ -19,7 +19,7 @@ class StorageJson(IStorage):
             data = {}
         return data
 
-    def add_movie(self, title, year: int, rating: int, poster=None):
+    def add_movie(self, title, year: int, rating: int, poster):
         """Adds a movie to the movies database.
         Loads the information from the JSON file,
         add the movie, and saves it."""
@@ -28,7 +28,11 @@ class StorageJson(IStorage):
         if title in data:
             return
 
-        data[title] = {"rating": rating, "year": year}
+        data[title] = {
+            "rating": rating,
+            "year": year,
+            "poster": poster
+        }
 
         with open(self.file_path, 'w') as fileobj:
             json.dump(data, fileobj, indent=4)
