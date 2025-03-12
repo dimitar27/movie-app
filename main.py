@@ -1,6 +1,5 @@
 from movie_app import MovieApp
-from storage_csv import StorageCsv
-from storage_json import StorageJson
+from storage.storage_json import StorageJson
 
 
 def main():
