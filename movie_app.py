@@ -183,7 +183,37 @@ class MovieApp:
             print(f"{name}: {rating}")
 
     def _generate_website(self):
-        pass
+        """Generates an HTML file displaying the movies from the database."""
+
+        movies = self._storage.list_movies()
+
+        movie_grid_content = ""
+
+        for title, details in movies.items():
+            poster_url = details.get("poster")
+            year = details.get("year")
+
+            movie_grid_content += f"""
+            <li>
+                <div class="movie">
+                    <img class="movie-poster" src="{poster_url}" alt="Movie Poster">
+                    <div class="movie-title">{title}</div>
+                    <div class="movie-year">{year}</div>
+                </div>
+            </li>
+            """
+
+            with open("_static/index_template.html", "r") as file:
+                template_html = file.read()
+
+
+        final_html = template_html.replace("__TEMPLATE_MOVIE_GRID__", movie_grid_content)
+
+
+        with open("_static/index.html", "w") as file:
+            file.write(final_html)
+
+        print("Website generated successfully as index.html.")
 
     def run(self):
         """Runs the main program loop."""
@@ -230,6 +260,8 @@ class MovieApp:
                 self._command_search_movie()
             elif user_input == 8:
                 self._command_movie_by_rating()
+            elif user_input == 9:
+                self._generate_website()
             else:
                 print(f"Invalid choice.")
                 continue

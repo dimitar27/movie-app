@@ -1,67 +1,17 @@
 {
-    "Pet Sematary": {
-        "rating": 6.5,
-        "year": 1983
-    },
-    "Ratched ": {
-        "rating": 8.5,
-        "year": 2020
-    },
-    "Final Destination": {
-        "rating": 6.8,
-        "year": 2000
-    },
-    "Better than Us": {
-        "rating": 9.5,
-        "year": 2018
-    },
-    "A.I. Artificial Intelligence": {
-        "rating": 10.0,
-        "year": 2001
-    },
-    "The Haunting of Bly Manor": {
-        "rating": 7.0,
-        "year": 2020
-    },
-    "M3GAN": {
-        "rating": 9.3,
-        "year": 2022
-    },
-    "Midnight Mass": {
-        "rating": 8.0,
-        "year": 2021
-    },
-    "I, Robot": {
-        "rating": 5.6,
-        "year": 2004
-    },
-    "Spy Kids": {
-        "rating": 6.5,
-        "year": 2001
-    },
-    "The Nightmare Before Christmas": {
-        "rating": 4.0,
-        "year": 1993
-    },
-    "Corpse Bride": {
-        "rating": 4.5,
-        "year": 2005
-    },
-    "Wild Child": {
-        "rating": 5.0,
-        "year": 2008
-    },
-    "The Haunting of Hill House": {
-        "rating": 7.6,
-        "year": 2018
-    },
-    "Carrie": {
-        "rating": 6.5,
-        "year": 2013
-    },
     "Harry Potter and the Deathly Hallows: Part 2": {
         "rating": 8.1,
         "year": 2011,
         "poster": "https://m.media-amazon.com/images/M/MV5BOTA1Mzc2N2ItZWRiNS00MjQzLTlmZDQtMjU0NmY1YWRkMGQ4XkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    "Pet Sematary": {
+        "rating": 6.5,
+        "year": 1989,
+        "poster": "https://m.media-amazon.com/images/M/MV5BZTEyYWIyZWYtMTM5OC00M2ZmLWI5NzMtZjA0ZTI4MTQ4ZDZkXkEyXkFqcGc@._V1_SX300.jpg"
+    },
+    "Ratched": {
+        "rating": 7.3,
+        "year": 2020,
+        "poster": "https://m.media-amazon.com/images/M/MV5BYTU2YjcwNzQtMzE0Ni00M2MwLThhZDgtMjZlNjcxYzBlN2FhXkEyXkFqcGc@._V1_SX300.jpg"
     }
 }

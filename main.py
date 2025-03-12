@@ -8,9 +8,6 @@ def main():
     movie_app = MovieApp(storage)
     movie_app.run()
 
-    storage2 = StorageCsv('movies.csv')
-    movie_app2 = MovieApp(storage2)
-    movie_app2.run()
 
 
 
