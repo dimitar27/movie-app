@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-API_KEY = os.getenv("API_KEY")
+API_KEY = "a3d68c88"
 URL = f"https://www.omdbapi.com/?apikey={API_KEY}"
 
 class MovieApp:
@@ -189,6 +189,9 @@ class MovieApp:
 
         movie_grid_content = ""
 
+        with open("_static/index_template.html", "r") as file:
+            template_html = file.read()
+
         for title, details in movies.items():
             poster_url = details.get("poster")
             year = details.get("year")
@@ -202,9 +205,6 @@ class MovieApp:
                 </div>
             </li>
             """
-
-            with open("_static/index_template.html", "r") as file:
-                template_html = file.read()
 
 
         final_html = template_html.replace("__TEMPLATE_MOVIE_GRID__", movie_grid_content)

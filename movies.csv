@@ -1,21 +1,2 @@
-{
-    "Harry Potter": {
-        "rating": 8.0,
-        "year": 2001
-    },
-    "The Lord of the Rings: The Fellowship of the Ring": {
-        "rating": 8.9,
-        "year": 2001,
-        "poster": "https://m.media-amazon.com/images/M/MV5BNzIxMDQ2YTctNDY4MC00ZTRhLTk4ODQtMTVlOWY4NTdiYmMwXkEyXkFqcGc@._V1_SX300.jpg"
-    },
-    "Ratched": {
-        "rating": 7.3,
-        "year": 2020,
-        "poster": "https://m.media-amazon.com/images/M/MV5BYTU2YjcwNzQtMzE0Ni00M2MwLThhZDgtMjZlNjcxYzBlN2FhXkEyXkFqcGc@._V1_SX300.jpg"
-    },
-    "Final Destination": {
-        "rating": 6.7,
-        "year": 2000,
-        "poster": "https://m.media-amazon.com/images/M/MV5BMjE1MjlmOWYtYzdjMS00OTgwLThjMDctZWU4N2FkZjgyNTJiXkEyXkFqcGc@._V1_SX300.jpg"
-    }
-}
+Harry Potter and the Deathly Hallows: Part 2,8.1,2011,https://m.media-amazon.com/images/M/MV5BOTA1Mzc2N2ItZWRiNS00MjQzLTlmZDQtMjU0NmY1YWRkMGQ4XkEyXkFqcGc@._V1_SX300.jpg
+Harry Potter and the Deathly Hallows: Part 2,8.1,2011,https://m.media-amazon.com/images/M/MV5BOTA1Mzc2N2ItZWRiNS00MjQzLTlmZDQtMjU0NmY1YWRkMGQ4XkEyXkFqcGc@._V1_SX300.jpg
